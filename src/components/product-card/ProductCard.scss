@@ -1,5 +1,11 @@
+.product-card-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .product-card {
     width: 100%;
+    max-width: 320px;
     padding: 1rem;
     display: flex;
     flex-direction: column;

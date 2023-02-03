@@ -1,0 +1,42 @@
+$background: #2b2a29;
+$link-color: #e3e3e3;
+$tri-height: 2rem;
+$tri-width: 1.5rem;
+.info-links-container {
+    width: 70%;
+    display: flex;
+    #triangle-top-right {
+        width: 0;
+        height: 0;
+        border-top: $tri-height solid $background;
+        border-left: $tri-width solid transparent;
+    }
+    #triangle-top-left {
+        width: 0;
+        height: 0;
+        border-top: $tri-height solid $background;
+        border-right: $tri-width solid transparent;
+    }
+    .info-links {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        background-color: $background;
+        color: $link-color;
+        gap: 1rem;
+        padding: 0.2rem 0;
+        .link {
+            cursor: pointer;
+            font-size: 0.8rem;
+            width: max-content;
+            text-transform: capitalize;
+            transition: ease-in-out 100ms;
+            &:hover {
+                transform: scale(1.1);
+                font-weight: 600;
+                text-decoration: underline;
+            }
+        }
+    }
+}

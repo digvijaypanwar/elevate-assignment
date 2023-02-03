@@ -5,6 +5,7 @@ import './App.css';
 import { useAppDispatch } from './app/hooks';
 import { getCategoriesAsync } from './features/categorySlice';
 import { Products } from './features/products/Products';
+import { Header } from './components/header/Header';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -16,6 +17,7 @@ function App() {
 
     return (
         <div className="app">
+            <Header />
             <Products />
         </div>
     );

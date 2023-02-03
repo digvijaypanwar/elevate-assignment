@@ -1,0 +1,12 @@
+.products-container {
+    background-color: white;
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -20,6 +20,7 @@ export function Search() {
             dispatch(setSearch(''));
         };
     }, [dispatch]);
+
     return (
         <div className="search-container">
             <input
@@ -30,8 +31,14 @@ export function Search() {
                 onChange={(e) => {
                     setInput(e.target.value);
                 }}
+                onKeyUp={(e) => {
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                }}
                 required
             />
+
             <button
                 title="search"
                 className="search-icon"

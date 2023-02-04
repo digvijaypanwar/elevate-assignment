@@ -1,3 +1,5 @@
+@use '../../utils/styles/breakpoints';
+
 $background: #2b2a29;
 $link-color: #e3e3e3;
 $tri-height: 2rem;
@@ -46,7 +48,7 @@ $tri-width: 1.5rem;
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: breakpoints.$tablet) {
     .info-links-container {
         width: auto;
 

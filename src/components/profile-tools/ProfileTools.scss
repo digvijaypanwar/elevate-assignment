@@ -1,0 +1,18 @@
+.profile-tools {
+    display: flex;
+    align-items: center;
+
+    .profile-tool {
+        padding: 0.5rem;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: white;
+
+        .tool-text {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+    }
+}

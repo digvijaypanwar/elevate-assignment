@@ -14,7 +14,9 @@ export function InfoLinks() {
             <div id="triangle-top-right"></div>
             <div className="info-links">
                 {links.map((link) => (
-                    <p className="link">{link.text}</p>
+                    <p key={link.text} className="link">
+                        {link.text}
+                    </p>
                 ))}
             </div>
             <div id="triangle-top-left"></div>

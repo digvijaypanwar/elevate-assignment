@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProducts } from '../FakeStoreApi';
-import { RootState, AppThunk } from '../../app/store';
-
+import { RootState } from '../../app/store';
+import { AsyncStatuses, AsyncStatusesType } from '../../utils/status';
 export interface Product {
     id: number;
     title: string;
@@ -16,25 +16,31 @@ export interface Product {
 }
 export interface ProductsState {
     products: Product[];
-    status: 'idle' | 'loading' | 'failed';
+    status: AsyncStatusesType;
+    search: string;
 }
 
 const initialState: ProductsState = {
     products: [],
-    status: 'idle',
+    status: AsyncStatuses.IDLE,
+    search: '',
 };
 
 export const getProductsAsync = createAsyncThunk(
     'products/fetchProducts',
-    async () => {
-        return await fetchProducts();
+    async (category: string, _thunkApi) => {
+        return await fetchProducts(category);
     }
 );
 
 export const productsSlice = createSlice({
     name: 'products',
     initialState,
-    reducers: {},
+    reducers: {
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getProductsAsync.pending, (state) => {
@@ -50,7 +56,9 @@ export const productsSlice = createSlice({
     },
 });
 
+export const { setSearch } = productsSlice.actions;
+
 export default productsSlice.reducer;
 
 //selectors
-export const selectProducts = (state: RootState) => state.products.products;
+export const selectProducts = (state: RootState) => state.products;

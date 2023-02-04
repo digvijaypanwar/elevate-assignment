@@ -1,0 +1,56 @@
+$dark-color: #30302e;
+.select-category {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+
+    .select-control {
+        padding: 0.4rem 0.6rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        background: $dark-color;
+        color: white;
+        border-radius: 4px;
+
+        margin-bottom: 2px;
+        .selected {
+            width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .select-options {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        z-index: 1;
+        background-color: white;
+        border-radius: 1;
+        border-radius: 4px;
+        padding: 0.2rem;
+        .select-option {
+            padding: 0.4rem 0.6rem;
+
+            transition: ease-in-out 100ms;
+            &:hover {
+                cursor: pointer;
+                background-color: #30302e;
+                color: white;
+                border-radius: 4px;
+            }
+            .select-option-text {
+                text-align: left;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}

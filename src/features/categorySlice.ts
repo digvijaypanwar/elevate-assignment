@@ -1,16 +1,19 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchCategories } from './FakeStoreApi';
+import { RootState } from '../app/store';
+import { AsyncStatuses, AsyncStatusesType } from '../utils/status';
+import { CategoryDefault } from '../utils/category.util';
 
 export interface CategoryState {
     categories: string[];
-    status: 'idle' | 'loading' | 'failed';
-    searchCategories: string[];
+    status: AsyncStatusesType;
+    currentCategory: string;
 }
 
 const initialState: CategoryState = {
     categories: [],
-    status: 'idle',
-    searchCategories: [],
+    status: AsyncStatuses.IDLE,
+    currentCategory: CategoryDefault,
 };
 
 export const getCategoriesAsync = createAsyncThunk(
@@ -24,18 +27,18 @@ export const categorySlice = createSlice({
     name: 'category',
     initialState,
     reducers: {
-        addSearchCategory: (state, action: PayloadAction<string>) => {
-            if (state.searchCategories.indexOf(action.payload) === -1) {
-                state.searchCategories.push(action.payload);
+        setCurrentCategory: (state, action: PayloadAction<string>) => {
+            if (state.categories.indexOf(action.payload) !== -1) {
+                state.currentCategory = action.payload;
             }
         },
-        removeSearchCategory: (state, action: PayloadAction<string>) => {
-            if (state.searchCategories.indexOf(action.payload) !== -1) {
-                state.searchCategories = state.searchCategories.filter(
-                    (category) => category !== action.payload
-                );
-            }
-        },
+        // removeSearchCategory: (state, action: PayloadAction<string>) => {
+        //     if (state.searchCategories.indexOf(action.payload) !== -1) {
+        //         state.searchCategories = state.searchCategories.filter(
+        //             (category) => category !== action.payload
+        //         );
+        //     }
+        // },
     },
     extraReducers: (builder) => {
         builder
@@ -44,7 +47,7 @@ export const categorySlice = createSlice({
             })
             .addCase(getCategoriesAsync.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.categories = action.payload;
+                state.categories = [CategoryDefault, ...action.payload];
             })
             .addCase(getCategoriesAsync.rejected, (state) => {
                 state.status = 'failed';
@@ -52,7 +55,11 @@ export const categorySlice = createSlice({
     },
 });
 
-export const { addSearchCategory, removeSearchCategory } =
-    categorySlice.actions;
+export const { setCurrentCategory } = categorySlice.actions;
 
 export default categorySlice.reducer;
+
+/** Selectors */
+export const selectCategories = (state: RootState) => state.category.categories;
+export const selectCurrentCategory = (state: RootState) =>
+    state.category.currentCategory;

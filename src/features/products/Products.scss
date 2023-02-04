@@ -1,11 +1,44 @@
-.products-container {
-    width: 75%;
-    background-color: white;
-    // background: red;
+$dark-color: #30302e;
 
-    .title {
-        font-size: 1.5rem;
+.products-container {
+    padding: 2rem 10%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: white 0px 54px 55px, white 0px -12px 30px, white 0px 4px 6px,
+        white 0px 12px 13px, white 0px -3px 5px;
+
+    .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 1rem;
         margin-bottom: 2rem;
+        .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        button {
+            padding: 0.5rem 2rem;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: $dark-color;
+            transition: ease-in-out 100ms;
+            &:hover {
+                // background-color: black;
+                cursor: pointer;
+                transform: scale(1.05);
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            }
+        }
     }
 
     .products-grid {

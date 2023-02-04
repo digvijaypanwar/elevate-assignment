@@ -9,10 +9,7 @@ import {
 
 import './CategorySelect.scss';
 
-interface CategroySelectProps {
-    placeHolder?: string;
-}
-export function CategorySelect({}: CategroySelectProps) {
+export function CategorySelect() {
     const categories = useAppSelector(selectCategories);
     const currentCategory = useAppSelector(selectCurrentCategory);
     const [showList, setShowList] = useState(false);
@@ -46,7 +43,7 @@ export function CategorySelect({}: CategroySelectProps) {
                 title={currentCategory}
                 onClick={handleDisplayClick}
             >
-                <div className="selected">{currentCategory}</div>
+                <p className="selected">{currentCategory}</p>
 
                 {showList ? (
                     <AiFillCaretUp color="white" />

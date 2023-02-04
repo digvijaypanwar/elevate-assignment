@@ -1,4 +1,5 @@
 .app {
+  min-width: 20rem;
   width: 100%;
   text-align: center;
   display: flex;

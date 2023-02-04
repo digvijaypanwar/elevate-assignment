@@ -1,0 +1,36 @@
+.carousel-static {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    .carousel-text {
+        flex: 1;
+        // max-width: 30%;
+        font-size: 2.75rem;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: clip;
+    }
+    .round {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.597);
+        color: black;
+        font-size: 1rem;
+        display: grid;
+        place-items: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .carousel-static .carousel-text {
+        font-size: 2rem;
+    }
+}

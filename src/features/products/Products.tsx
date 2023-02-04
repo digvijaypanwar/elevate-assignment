@@ -44,7 +44,7 @@ export function Products() {
                     return `(?=.*${x})`;
                 })
                 .join('');
-            const regex = new RegExp(`${pattern}`, 'g');
+            const regex = new RegExp(`${pattern}`, 'gi');
             return products.filter((product) => regex.test(product.title));
         }
 

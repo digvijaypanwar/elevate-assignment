@@ -13,11 +13,20 @@ export function InfoLinks() {
         <div className="info-links-container">
             <div id="triangle-top-right"></div>
             <div className="info-links">
-                {links.map((link) => (
-                    <p key={link.text} className="link">
-                        {link.text}
-                    </p>
-                ))}
+                <div className="info-links-group">
+                    {links.slice(0, 3).map((link) => (
+                        <p key={link.text} className="link">
+                            {link.text}
+                        </p>
+                    ))}
+                </div>
+                <div className="info-links-group">
+                    {links.slice(3).map((link) => (
+                        <p key={link.text} className="link">
+                            {link.text}
+                        </p>
+                    ))}
+                </div>
             </div>
             <div id="triangle-top-left"></div>
         </div>

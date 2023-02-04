@@ -26,6 +26,11 @@ $tri-width: 1.5rem;
         color: $link-color;
         gap: 1rem;
         padding: 0.2rem 0;
+
+        .info-links-group {
+            display: flex;
+            gap: 1rem;
+        }
         .link {
             cursor: pointer;
             font-size: 0.8rem;
@@ -37,6 +42,22 @@ $tri-width: 1.5rem;
                 font-weight: 600;
                 text-decoration: underline;
             }
+        }
+    }
+}
+
+@media (max-width: 520px) {
+    .info-links-container {
+        width: auto;
+
+        .info-links {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #triangle-top-right,
+        #triangle-top-left {
+            border-top-width: calc(2 * $tri-height);
         }
     }
 }

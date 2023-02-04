@@ -7,7 +7,9 @@ import { ProfileTools } from '../profile-tools/ProfileTools';
 export function Navbar() {
     return (
         <div className="navbar">
-            <GiHamburgerMenu color="white" size={36} />
+            <div className="ham-menu-icon">
+                <GiHamburgerMenu />
+            </div>
             <CategorySelect />
             <Search />
             <Langlist />
